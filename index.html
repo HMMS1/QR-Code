@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <link rel="icon" type="image/png" href="/Capture.PNG">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> QR Code</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+            text-align: center;
+            background-color: #1e1e2f;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: #2a2a3b;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            display: inline-block;
+            width: 320px;
+        }
+        h2 {
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+        input {
+            width: calc(100% - 20px);
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: none;
+            font-size: 16px;
+            background: #3a3a4f;
+            color: #fff;
+            text-align: center;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #qrcode {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Create Your QR Code Now  😊  </h2>
+        <input type="text" id="text" placeholder="  Enter the link here ">
+        <button onclick="generateQR()">Create QR</button>
+        <div id="qrcode"></div>
+    </div>
+
+    <script>
+        function generateQR() {
+            let qrDiv = document.getElementById("qrcode");
+            qrDiv.innerHTML = ""; // مسح أي QR سابق
+            let text = document.getElementById("text").value;
+            if (text.trim() !== "") {
+                new QRCode(qrDiv, {
+                    text: text,
+                    width: 200,
+                    height: 200
+                });
+            } else {
+                alert("الرجاء إدخال نص صحيح");
+            }
+        }
+    </script>
+</body>
+</html>
